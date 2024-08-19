@@ -23,11 +23,22 @@ extern char **environ;
  *
  * line: La ligne de commande entrée par l'utilisateur.
  * home_directory: Le chemin du répertoire HOME.
- * previous_directory: Le chemin du répertoire utilisé par la commande 'cd'.
+ * previous_directory: Le chemin du répertoire précédent utilisé par la commande 'cd'.
  *
- * Return: Cette fonction ne retourne rien, effectue l'exécution la commande
+ * Return: Cette fonction ne retourne rien, mais elle effectue l'exécution de la commande
+ *         dans un processus enfant.
  */
-void execute_command
-(const char *line, const char *home_directory, char *previous_directory);
+void execute_command(const char *line, const char *home_directory,
+                     char *previous_directory);
+
+/* Fonction pour gérer la commande "cd" */
+void execute_cd(const char *line, const char *home_directory,
+                char *previous_directory);
+
+/* Fonction pour gérer la commande "pwd" */
+void execute_pwd(const char *line);
+
+/* Fonction pour gérer la commande "ls" */
+void execute_ls(const char *line);
 
 #endif /* SIMPLE_SHELL_H */
