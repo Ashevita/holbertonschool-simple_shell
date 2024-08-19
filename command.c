@@ -6,19 +6,19 @@
  * @home_directory: Le chemin du répertoire HOME.
  * @previous_directory: Le chemin du répertoire utilisé par la commande 'cd'.
  *
- * Description: gère les commandes "cd", "pwd", et "ls" de manière spéciale.
+ * Description: Gère les commandes "cd", "pwd", et "ls" de manière spéciale.
  * Pour les autres commandes, elle crée un processus enfant pour les exécuter
- *en utilisant `execve`. Elle gère également les erreurs liées aux commandes.
+ * en utilisant `execve`. Elle gère également les erreurs liées aux commandes.
  */
 void execute_command(const char *line, const char *home_directory,
-char *previous_directory)
+                     char *previous_directory)
 {
     char *args[3];
     pid_t pid;
     int status;
 
     /* Traiter la commande "cd" séparément */
-    if (strncmp(line, "cd", 2) == 0)
+    if (strcmp(line, "cd") == 0 || strncmp(line, "cd ", 3) == 0)
     {
         char *path = strtok((char *)line + 3, " ");
         char current_directory[1024];
@@ -39,11 +39,11 @@ char *previous_directory)
             path = previous_directory; /* Aller au répertoire précédent */
         }
 
-    /* Mettre à jour le répertoire précédent avant de changer de répertoire */
-		if (getcwd(current_directory, sizeof(current_directory)) != NULL)
+        /* Mettre à jour le répertoire précédent avant de changer de répertoire */
+        if (getcwd(current_directory, sizeof(current_directory)) != NULL)
         {
-            strncpy
-(previous_directory, current_directory, sizeof(previous_directory) - 1);
+            strncpy(previous_directory, current_directory,
+			sizeof(previous_directory) - 1);
         }
 
         /* Changer de répertoire */
@@ -103,7 +103,8 @@ char *previous_directory)
     else
     {
         /* Processus parent : attendre que le processus enfant se termine */
-        do {
+        do
+        {
             waitpid(pid, &status, 0);
         } while (!WIFEXITED(status) && !WIFSIGNALED(status));
     }
