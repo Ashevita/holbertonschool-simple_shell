@@ -1,4 +1,3 @@
-// simple_shell.h
 #ifndef SIMPLE_SHELL_H
 #define SIMPLE_SHELL_H
 
@@ -10,7 +9,7 @@
 
 extern char **environ;
 
-// Fonction pour exécuter une commande
+/* Fonction pour exécuter une commande */
 void execute_command(const char *line, const char *home_directory, char *previous_directory);
 
-#endif // SIMPLE_SHELL_H
+#endif /* SIMPLE_SHELL_H */
