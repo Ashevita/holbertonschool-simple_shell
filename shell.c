@@ -29,13 +29,13 @@ int main(void)
         /* Vérifier la fin de fichier ou une erreur de lecture */
         if (nread == -1)
         {
-            /* Si getline renvoie -1, cela indique soit une fin de fichier (EOF) soit une erreur */
+    /* Si getline renvoie -1, soit une fin de fichier (EOF) soit une erreur */
             if (line == NULL)
             {
                 /* Fin de fichier ou erreur critique : sortir de la boucle */
                 break;
             }
-            /* Si nous avons une erreur de lecture mais line est non NULL, libérer la mémoire et continuer */
+    /* Si erreur mais line=non NULL, libérer la mémoire et continuer */
             perror("");
             free(line);
             line = NULL;
