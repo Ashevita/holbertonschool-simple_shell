@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/wait.h>  // Inclusion de l'en-tête pour la fonction wait
+
+#define MAX_COMMAND_LENGTH 1024
+
+int main(void)
+{
+    char command[MAX_COMMAND_LENGTH];
+
+    while (1) {
+        printf("simple_shell> ");
+
+        // Lire la commande entrée par l'utilisateur
+        if (fgets(command, MAX_COMMAND_LENGTH, stdin) == NULL) {
+            // Si Ctrl+D (EOF) est entré, sortir de la boucle
+            printf("\n");
+            break;
+        }
+
+        // Retirer le saut de ligne à la fin de la commande
+        command[strcspn(command, "\n")] = 0;
+
+        // Si la commande est vide, continuer la boucle
+        if (command[0] == '\0') {
+            continue;
+        }
+
+        // Créer un processus enfant pour exécuter la commande
+        pid_t pid = fork();
+
+        if (pid == -1) {
+            // Gérer l'erreur de fork
+            perror("Erreur de fork");
+        } else if (pid == 0) {
+            // Processus enfant : exécuter la commande
+            execlp(command, command, (char *)NULL);
+
+            // Si execlp échoue, afficher un message d'erreur
+            perror("Erreur d'exécution");
+            exit(EXIT_FAILURE);
+        } else {
+            // Processus parent : attendre que le processus enfant termine
+            int status;
+            wait(&status);  // Utilisation de la fonction wait
+        }
+    }
+
+    return 0;
+}
