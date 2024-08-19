@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * _atoi - convert a string to an integer.
+ * _atoi - Converts a string to an integer.
  *
- * @prmString: char pointer
+ * @prmString: Pointer to the string to be converted.
  *
- * Return: int
+ * Return: The integer value of the converted string.
  */
 int _atoi(char *prmString)
 {
@@ -23,10 +23,15 @@ int _atoi(char *prmString)
 			number += current - 48;
 		}
 		else if (current == '-')
+		{
 			sign = -sign;
+		}
 		else if (number > 0)
+		{
 			break;
+		}
 	}
 
 	return (sign * number);
 }
+
