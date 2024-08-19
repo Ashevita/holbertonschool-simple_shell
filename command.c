@@ -23,7 +23,7 @@ void execute_command(const char *line, const char *home_directory, char *previou
         }
 
         if (getcwd(current_directory, sizeof(current_directory)) != NULL) {
-            strncpy(previous_directory, current_directory, sizeof(previous_directory) - 1);
+strncpy(previous_directory, current_directory, sizeof(previous_directory) - 1);
         }
 
         if (chdir(path) != 0) {

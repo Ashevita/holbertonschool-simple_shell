@@ -10,6 +10,7 @@
 extern char **environ;
 
 /* Fonction pour exécuter une commande */
-void execute_command(const char *line, const char *home_directory, char *previous_directory);
+void execute_command
+(const char *line, const char *home_directory, char *previous_directory);
 
 #endif /* SIMPLE_SHELL_H */

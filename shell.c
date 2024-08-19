@@ -24,7 +24,7 @@ int main(void)
                 break;
             }
             /* Si nous avons une erreur de lecture mais line est non NULL, libérer la mémoire et continuer */
-            perror("Sortie avec");
+            perror("");
             free(line);
             line = NULL;
             len = 0;
