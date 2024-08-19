@@ -1,5 +1,14 @@
 #include "simple_shell.h"
 
+/**
+ * main - Point d'entrée du shell simple
+ *
+ * Description: Cette fonction implémente une boucle infinie
+ *              qui affiche un prompt, lit une ligne de commande,
+ *              et exécute la commande entrée par l'utilisateur.
+ *
+ * Return: Toujours 0 (succès).
+ */
 int main(void)
 {
     char *line = NULL;
@@ -8,7 +17,8 @@ int main(void)
     char previous_directory[1024] = "";
     const char *home_directory = "/home"; /* Chemin par défaut pour HOME */
 
-    while (1) {
+    while (1)
+    {
         /* Afficher le prompt */
         printf("simple_shell> ");
         fflush(stdout); /* Assurer que le prompt est affiché */
@@ -17,9 +27,11 @@ int main(void)
         nread = getline(&line, &len, stdin);
 
         /* Vérifier la fin de fichier ou une erreur de lecture */
-        if (nread == -1) {
+        if (nread == -1)
+        {
             /* Si getline renvoie -1, cela indique soit une fin de fichier (EOF) soit une erreur */
-            if (line == NULL) {
+            if (line == NULL)
+            {
                 /* Fin de fichier ou erreur critique : sortir de la boucle */
                 break;
             }
@@ -35,7 +47,8 @@ int main(void)
         line[strcspn(line, "\n")] = '\0';
 
         /* Ignorer les lignes vides */
-        if (strlen(line) == 0) {
+        if (strlen(line) == 0)
+        {
             continue;
         }
 
@@ -46,5 +59,5 @@ int main(void)
     /* Libérer la mémoire allouée */
     free(line);
 
-    return 0;
+    return (0);
 }
