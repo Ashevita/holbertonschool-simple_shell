@@ -27,17 +27,7 @@ extern char **environ;
  *
  * Return: Cette fonction ne retourne rien
  */
-void execute_command(const char *line, const char *home_directory,
-					char *previous_directory);
+void execute_command(const char *line);
 
-/* Fonction pour gérer la commande "cd" */
-void execute_cd(const char *line, const char *home_directory,
-					char *previous_directory);
-
-/* Fonction pour gérer la commande "pwd" */
-void execute_pwd(const char *line);
-
-/* Fonction pour gérer la commande "ls" */
-void execute_ls(const char *line);
 
 #endif /* SIMPLE_SHELL_H */

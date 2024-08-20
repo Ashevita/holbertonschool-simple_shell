@@ -1,37 +1,58 @@
 #include "simple_shell.h"
+#include <string.h>
 
 /**
  * execute_command - Exécute une commande entrée par l'utilisateur.
  * @line: La ligne de commande entrée par l'utilisateur.
- * @home_directory: Le chemin du répertoire HOME.
- * @previous_directory: Le chemin du répertoire utilisé par la commande 'cd'.
  *
- * Description: Appel les fonction spécifique de la commande entrée.
+ * Description: Appel les fonctions spécifiques en fonction de la commande entrée.
  */
-void execute_command(const char *line, const char *home_directory,
-						char *previous_directory)
+void execute_command(const char *line)
 {
-	if (strncmp(line, "cd", 2) == 0)
+	char *cmd;
+	char *args[2];
+	pid_t pid;
+
+	/* Copier la ligne pour éviter de modifier l'originale */
+	char *line_copy = strdup(line);
+
+	if (line_copy == NULL)
 	{
-		execute_cd(line, home_directory, previous_directory);
+		perror("strdup");
+		return;
 	}
-	else if (strcmp(line, "pwd") == 0)
+
+	/* Extraire la première partie de la commande */
+	cmd = strtok(line_copy, " ");
+
+	/* Comparer et exécuter la commande */
+	if (cmd != NULL && strcmp(cmd, "cd") == 0)
 	{
-		execute_pwd(line);
+		/* Appeler la fonction pour 'cd' ici */
+		/* execute_cd(line); */
 	}
-	else if (strcmp(line, "ls") == 0)
+	else if (cmd != NULL && strcmp(cmd, "pwd") == 0)
 	{
-		execute_ls(line);
+		/* Appeler la fonction pour 'pwd' ici */
+		/* execute_pwd(); */
+	}
+	else if (cmd != NULL && strcmp(cmd, "ls") == 0)
+	{
+		/* Appeler la fonction pour 'ls' ici */
+		/* execute_ls(); */
 	}
 	else
 	{
 		/* Préparer les arguments pour les autres commandes */
-		char *args[] = {(char *)line, NULL};
-		pid_t pid = fork();
+		args[0] = cmd;
+		args[1] = NULL;
+
+		pid = fork();
 
 		if (pid == -1)
 		{
 			perror("fork");
+			free(line_copy);
 			return;
 		}
 		else if (pid == 0)
@@ -50,5 +71,8 @@ void execute_command(const char *line, const char *home_directory,
 				waitpid(pid, &status, 0);
 			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 		}
-		}
+	}
+
+	/* Libérer la mémoire allouée */
+	free(line_copy);
 }
