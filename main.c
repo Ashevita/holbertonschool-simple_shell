@@ -18,7 +18,7 @@ int main(void)
 	{
 		/* Afficher le prompt */
 		printf("simple_shell> ");
-		fflush(stdout); /* Assurer que le prompt est affiché */
+		fflush(stdin); /* Assurer que le prompt est affiché */
 
 		/* Lire la ligne de commande */
 		nread = getline(&line, &len, stdin);
