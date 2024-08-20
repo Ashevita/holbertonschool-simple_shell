@@ -17,7 +17,7 @@ int main(void)
 	while (1)
 	{
 		{
-		if(isatty(STDIN_FILENO))
+		if (isatty(STDIN_FILENO))
 		printf("$ ");/* affiche le prompt*/
 
 		fflush(stdout); /* Assurer que le prompt est affiché */
@@ -32,8 +32,7 @@ int main(void)
 			if (line == NULL)
 				break;
 
-			/* Erreur, libérer la mémoire et continuer */
-			perror("");
+			/* Erreur, libérer la mémoire continuer */
 			free(line);
 			line = NULL;
 			len = 0;

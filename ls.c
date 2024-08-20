@@ -25,7 +25,6 @@ void execute_ls(const char *line)
 			/* Processus enfant : exécuter la commande */
 			if (execve(args[0], args, environ) == -1)
 			{
-				perror("execve");
 				_exit(EXIT_FAILURE);
 			}
 		}
