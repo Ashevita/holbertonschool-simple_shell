@@ -17,10 +17,10 @@ int _atoi(char *prmString)
 	{
 		current = prmString[cLoop];
 
-		if (current >= '0' && current <= '9')  // Vérifie si current est un chiffre
+		if (current >= '0' && current <= '9')
 		{
 			number *= 10;
-			number += current - '0';  // Convertit le caractère en entier
+			number += current - '0';
 		}
 		else if (current == '-')
 		{
