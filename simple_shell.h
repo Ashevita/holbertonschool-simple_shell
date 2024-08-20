@@ -29,5 +29,6 @@ extern char **environ;
  */
 void execute_command(const char *line);
 
+int execute_commande(char *command);
 
 #endif /* SIMPLE_SHELL_H */
