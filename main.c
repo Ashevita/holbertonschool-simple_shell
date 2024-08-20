@@ -16,10 +16,12 @@ int main(void)
 
 	while (1)
 	{
+		if (isatty(STDOUT_FILENO))
+		{
 		/* Afficher le prompt */
 		printf("simple_shell> ");
-		fflush(stdin); /* Assurer que le prompt est affiché */
-
+		fflush(stdout); /* Assurer que le prompt est affiché */
+		}
 		/* Lire la ligne de commande */
 		nread = getline(&line, &len, stdin);
 
