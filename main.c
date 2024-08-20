@@ -32,7 +32,7 @@ int main(void)
 			if (line == NULL)
 				break;
 
-			/* Erreur, libérer la mémoire et continuer */
+			/* Erreur, libérer la mémoire continuer */
 			free(line);
 			line = NULL;
 			len = 0;
