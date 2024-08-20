@@ -7,6 +7,7 @@
 void execute_ls(const char *line)
 {
 	char *args[2];
+	pid_t pid = fork();
 
 	if (strcmp(line, "ls") == 0)
 	{
@@ -14,8 +15,6 @@ void execute_ls(const char *line)
 		args[1] = NULL;       /* Pas d'arguments supplémentaires */
 
 		/* Créer un processus enfant pour exécuter la commande */
-		pid_t pid = fork();
-
 		if (pid == -1)
 		{
 			perror("fork");

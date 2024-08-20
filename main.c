@@ -3,9 +3,8 @@
 /**
  * main - Point d'entrée du shell simple
  *
- * Description: Cette fonction implémente une boucle infinie
- * qui affiche un prompt, lit une ligne de commande,
- * et exécute la commande entrée par l'utilisateur.
+ * Description: Implémente une boucle infinie qui affiche un prompt,
+ *		read une ligne de commande, et exécute la commande entrée.
  *
  * Return: Toujours 0 (succès).
  */
@@ -14,8 +13,6 @@ int main(void)
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t nread;
-	char previous_directory[1024] = "";
-	const char *home_directory = "/home"; /* Chemin par défaut pour HOME */
 
 	while (1)
 	{
@@ -26,32 +23,29 @@ int main(void)
 		/* Lire la ligne de commande */
 		nread = getline(&line, &len, stdin);
 
-		/* Vérifier la fin de fichier ou une erreur de lecture */
+		/* Vérifier la fin de fichier ou une erreur */
 		if (nread == -1)
 		{
+			/* Fin de fichier ou erreur critique */
 			if (line == NULL)
-					break;
+				break;
 
+			/* Erreur, libérer la mémoire et continuer */
 			perror("");
 			free(line);
 			line = NULL;
 			len = 0;
 			break;
 		}
-
-		/* Retirer le saut de ligne de la commande */
-		line[strcspn(line, "\n")] = '\0';
-
+		/* Retirer le saut de ligne */
+		line[nread - 1] = '\0';
 		/* Ignorer les lignes vides */
 		if (strlen(line) == 0)
 			continue;
-
 		/* Exécuter la commande */
-		execute_command(line, home_directory, previous_directory);
+		execute_command(line);
 	}
-
-	/* Libérer la mémoire allouée */
+	/* Libérer la mémoire */
 	free(line);
-
 	return (0);
 }
