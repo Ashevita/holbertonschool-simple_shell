@@ -76,4 +76,4 @@ void quit(char **);
 extern void non_interactive(void);
 extern void initializer(char **current_command, int type_command);
 
-#endif /*SHELL_H*/
+#endif /*SHELL*/
