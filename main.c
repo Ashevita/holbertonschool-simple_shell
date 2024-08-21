@@ -43,6 +43,12 @@ int main(void)
 		/* Ignorer les lignes vides */
 		if (strlen(line) == 0)
 			continue;
+
+		if (strcmp(line, "exit") == 0)
+		{
+			free(line);
+			exit(0); /* Quitter le programme avec un code de retour 0 */
+		}
 		/* Exécuter la commande */
 		execute_command(line);
 	}
