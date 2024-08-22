@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/types.h>
 #include <sys/wait.h>
 
 /*
@@ -29,6 +30,10 @@ extern char **environ;
  */
 void execute_command(const char *line);
 
-int execute_commande(char *command);
+
+
+int command_exists(const char *cmd);
+
+char *getenv(const char *name);
 
 #endif /* SIMPLE_SHELL_H */
