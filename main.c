@@ -18,7 +18,7 @@ int main(void)
 		{
 		if (isatty(STDIN_FILENO))
 		printf("$ ");/* affiche le prompt*/
-		fflush(stdout); /* Assurer que le prompt est affiché */
+		fflush(stdout); /* Assurer que le prompt es affiché */
 		}
 		/* Lire la ligne de commande */
 		nread = getline(&line, &len, stdin);
