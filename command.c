@@ -5,14 +5,13 @@
  * execute_command - Exécute une commande entrée par l'utilisateur.
  * @line: La ligne de commande entrée par l'utilisateur.
  *
- * Description: Appel les fonctions spécifiques en fonction de la commande entrée.
+ * Description: Appel les fonctions spé en fonction de la commande entrée.
  */
 void execute_command(const char *line)
 {
 	char *cmd;
 	char *args[2];
 	pid_t pid;
-
 	/* Copier la ligne pour éviter de modifier l'originale */
 	char *line_copy = strdup(line);
 
@@ -21,16 +20,11 @@ void execute_command(const char *line)
 		perror("strdup");
 		return;
 	}
-
-	/* Extraire la première partie de la commande */
-	cmd = strtok(line_copy, " ");
-
+	cmd = strtok(line_copy, " "); /* Extrat la première partie de la commande */
 	/* Préparer les arguments pour les autres commandes */
 	args[0] = cmd;
 	args[1] = NULL;
-
 	pid = fork();
-
 	if (pid == -1)
 	{
 		perror("fork");

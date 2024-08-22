@@ -1,5 +1,4 @@
 #include "simple_shell.h"
-
 /**
  * main - Point d'entrée du shell simple
  *
@@ -19,19 +18,15 @@ int main(void)
 		{
 		if (isatty(STDIN_FILENO))
 		printf("$ ");/* affiche le prompt*/
-
 		fflush(stdout); /* Assurer que le prompt est affiché */
 		}
 		/* Lire la ligne de commande */
 		nread = getline(&line, &len, stdin);
-
 		/* Vérifier la fin de fichier ou une erreur */
 		if (nread == -1)
 		{
-			/* Fin de fichier ou erreur critique */
-			if (line == NULL)
+			if (line == NULL) /* Fin de fichier ou erreur critique */
 				break;
-
 			/* Erreur, libérer la mémoire continuer */
 			free(line);
 			line = NULL;
@@ -43,7 +38,6 @@ int main(void)
 		/* Ignorer les lignes vides */
 		if (strlen(line) == 0)
 			continue;
-
 		if (strcmp(line, "exit") == 0)
 		{
 			free(line);
