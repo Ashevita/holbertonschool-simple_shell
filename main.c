@@ -13,11 +13,12 @@ int main(void)
 	size_t len = 0;
 	ssize_t nread;
 
+
 	while (1)
 	{
 		{
 		if (isatty(STDIN_FILENO))
-		printf("$ ");/* affiche le prompt*/
+		printf("($) ");/* affiche le prompt*/
 		fflush(stdout); /* Assurer que le prompt est affiché */
 		}
 		/* Lire la ligne de commande */
