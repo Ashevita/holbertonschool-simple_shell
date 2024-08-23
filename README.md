@@ -79,7 +79,7 @@ Run the script with:
 ~~~~
 The shell reads commands from an input source (like a script or pipe), executes them sequentially, and exits when all commands are processed or when it encounters exit.
 ## Screenshots
-![alt text](image.png)
+![Flowchart printf](https://github.com/Ashevita/holbertonschool-simple_shell/blob/main/Flowtchart%20Shell.png)
 
 ## How the Project Was Built
 **Plan the Shell**: Decide on the basic commands and structure.
