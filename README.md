@@ -42,7 +42,7 @@ Run the shell:
 
 
 ~~~~
-./simple_shell
+./shell
 ~~~~
 Enter commands at the $ prompt. For example:
 
