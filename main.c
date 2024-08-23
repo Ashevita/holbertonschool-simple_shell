@@ -10,9 +10,9 @@
  */
 int main(void)
 {
-	char *line = NULL;
-	size_t len = 0;
-	ssize_t nread;
+	char *line = NULL; /*pointer for stock line read*/
+	size_t len = 0; /*lenght of memory for cmd line*/
+	ssize_t nread; /*number of char read*/
 
 	while (1)
 	{

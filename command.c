@@ -8,9 +8,9 @@
  */
 void execute_command(const char *line)
 {
-	char *cmd;
-	char *args[2];
-	pid_t pid;
+	char *cmd; /*pointer for store name of cmd*/
+	char *args[2]; /*Array to store arguments*/
+	pid_t pid; /*Process identifier to manage child processes.*/
 	/* Copy the line to avoid modifying the original */
 	char *line_copy = strdup(line);
 
