@@ -88,6 +88,6 @@ The shell reads commands from an input source (like a script or pipe), executes 
 
 **Implement Main Loop**: Write the main loop in main.c to handle user input and run commands.
 
-**Implement Commands**: Write functions in execute_command.c, execute_cd.c, execute_ls.c, and execute_pwd.c to handle different commands.
+**Implement Commands**: Write functions in command.c, cd.c, ls.c, and pwd.c to handle different commands.
 
 **Test the Shell**: Run the shell in both interactive and non-interactive modes to ensure it works correctly.
