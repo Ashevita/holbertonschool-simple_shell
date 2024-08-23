@@ -75,7 +75,7 @@ pwd
 Run the script with:
 
 ~~~~bash
-./simple_shell < commands.sh
+./shell < commands.sh
 ~~~~
 The shell reads commands from an input source (like a script or pipe), executes them sequentially, and exits when all commands are processed or when it encounters exit.
 ## Screenshots
