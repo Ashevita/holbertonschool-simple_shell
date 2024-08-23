@@ -13,6 +13,17 @@ This project is a simple command-line shell written in C. It allows users to exe
 - **File Listing**: The `ls` command lists files in the current directory.
 - **Exit**: The `exit` command closes the shell.
 
+## How the Project Was Built
+**Plan the Shell**: Decide on the basic commands and structure.
+
+**Create Header File**: Define functions and include necessary libraries in simple_shell.h.
+
+**Implement Main Loop**: Write the main loop in main.c to handle user input and run commands.
+
+**Implement Commands**: Write functions in command.c, cd.c, ls.c, and pwd.c to handle different commands.
+
+**Test the Shell**: Run the shell in both interactive and non-interactive modes to ensure it works correctly.
+
 ## Files
 
 - `simple_shell.h`: Contains function declarations and includes necessary headers.
@@ -81,13 +92,4 @@ The shell reads commands from an input source (like a script or pipe), executes 
 ## Screenshots
 ![Flowchart printf](https://github.com/Ashevita/holbertonschool-simple_shell/blob/main/Flowtchart%20Shell.png)
 
-## How the Project Was Built
-**Plan the Shell**: Decide on the basic commands and structure.
-
-**Create Header File**: Define functions and include necessary libraries in simple_shell.h.
-
-**Implement Main Loop**: Write the main loop in main.c to handle user input and run commands.
-
-**Implement Commands**: Write functions in command.c, cd.c, ls.c, and pwd.c to handle different commands.
-
-**Test the Shell**: Run the shell in both interactive and non-interactive modes to ensure it works correctly.
+Readme created by Henri Mille et Trésor Makosso
