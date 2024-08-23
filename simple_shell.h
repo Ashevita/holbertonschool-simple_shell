@@ -10,7 +10,7 @@
 
 /*
  * File: simple_shell.h
- * Auth: Votre Nom
+ * Auth: Your Name
  * Desc: Header file containing prototypes for all functions
  *       used in the simple shell project.
  */
@@ -20,20 +20,37 @@ extern char **environ;
 /*
  * Function: execute_command
  * -------------------------
- * Exécute la commande entrée par l'utilisateur dans le shell.
+ * Executes the command entered by the user in the shell.
  *
- * line: La ligne de commande entrée par l'utilisateur.
- * home_directory: Le chemin du répertoire HOME.
- * previous_directory: Le chemin du répertoire utilisé par la commande 'cd'.
+ * line: The command line entered by the user.
+ * home_directory: The path to the HOME directory.
+ * previous_directory: The path to the directory used by the 'cd' command.
  *
- * Return: Cette fonction ne retourne rien
+ * Return: This function does not return anything.
  */
 void execute_command(const char *line);
 
-
-
+/*
+ * Function: command_exists
+ * ------------------------
+ * Checks if a command exists in the system's PATH.
+ *
+ * cmd: The command to check.
+ *
+ * Return: 1 if the command exists, 0 otherwise.
+ */
 int command_exists(const char *cmd);
 
+/*
+ * Function: getenv
+ * ----------------
+ * Gets the value of an environment variable.
+ *
+ * name: The name of the environment variable.
+ *
+ * Return: The value of the environment variable if found,
+ *         NULL otherwise.
+ */
 char *getenv(const char *name);
 
 #endif /* SIMPLE_SHELL_H */

@@ -1,18 +1,17 @@
 #include "simple_shell.h"
 #include <string.h>
-
 /**
- * execute_command - Exécute une commande entrée par l'utilisateur.
- * @line: La ligne de commande entrée par l'utilisateur.
+ * execute_command - Executes a command entered by the user.
+ * @line: The command line entered by the user.
  *
- * Description: Appel les fonctions spé en fonction de la commande entrée.
+ * Description: Calls specific functions based on the command entered.
  */
 void execute_command(const char *line)
 {
 	char *cmd;
 	char *args[2];
 	pid_t pid;
-	/* Copier la ligne pour éviter de modifier l'originale */
+	/* Copy the line to avoid modifying the original */
 	char *line_copy = strdup(line);
 
 	if (line_copy == NULL)
@@ -20,8 +19,8 @@ void execute_command(const char *line)
 		perror("strdup");
 		return;
 	}
-	cmd = strtok(line_copy, " "); /* Extrat la première partie de la commande */
-	/* Préparer les arguments pour les autres commandes */
+	cmd = strtok(line_copy, " "); /* Extract the first part of the command */
+	/* Prepare arguments for other commands */
 	args[0] = cmd;
 	args[1] = NULL;
 	pid = fork();
@@ -33,6 +32,7 @@ void execute_command(const char *line)
 	}
 	else if (pid == 0)
 	{
+		/* Child process: execute the command */
 		if (execve(args[0], args, environ) == -1)
 		{
 			_exit(EXIT_FAILURE);
@@ -40,13 +40,12 @@ void execute_command(const char *line)
 	}
 	else
 	{
+		/* Parent process: wait for the child process to finish */
 		int status;
 
 		do {
 			waitpid(pid, &status, 0);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
-
-	/* Libérer la mémoire allouée */
 	free(line_copy);
 }

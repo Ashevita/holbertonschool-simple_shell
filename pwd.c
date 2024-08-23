@@ -1,8 +1,8 @@
 #include "simple_shell.h"
 
 /**
- * execute_pwd - Gère la commande "pwd".
- * @line: La ligne de commande entrée par l'utilisateur.
+ * execute_pwd - Handles the "pwd" command.
+ * @line: The command line entered by the user.
  */
 void execute_pwd(const char *line)
 {
@@ -10,7 +10,7 @@ void execute_pwd(const char *line)
 
 	if (strcmp(line, "pwd") == 0)
 	{
-		/* Obtenir et afficher le répertoire de travail actuel */
+		/* Get and display the current working directory */
 		if (getcwd(cwd, sizeof(cwd)) != NULL)
 			printf("%s\n", cwd);
 		else

@@ -1,11 +1,12 @@
 #include "simple_shell.h"
+
 /**
- * main - Point d'entrée du shell simple
+ * main - Entry point of the simple shell
  *
- * Description: Implémente une boucle infinie qui affiche un prompt,
- *		read une ligne de commande, et exécute la commande entrée.
+ * Description: Implements an infinite loop that displays a prompt,
+ *              reads a command line, and executes the entered command.
  *
- * Return: Toujours 0 (succès).
+ * Return: Always 0 (success).
  */
 int main(void)
 {
@@ -16,37 +17,37 @@ int main(void)
 	while (1)
 	{
 		{
-		if (isatty(STDIN_FILENO))
-		printf("$ ");/* affiche le prompt*/
-		fflush(stdout); /* Assurer que le prompt es affiché */
+			if (isatty(STDIN_FILENO))
+				printf("$ "); /* Display the prompt */
+			fflush(stdout); /* Ensure the prompt is displayed */
 		}
-		/* Lire la ligne de commande */
+		/* Read the command line */
 		nread = getline(&line, &len, stdin);
-		/* Vérifier la fin de fichier ou une erreur */
+		/* Check for end of file or an error */
 		if (nread == -1)
 		{
-			if (line == NULL) /* Fin de fichier ou erreur critique */
+			if (line == NULL) /* End of file or critical error */
 				break;
-			/* Erreur, libérer la mémoire continuer */
+			/* Error, free memory and continue */
 			free(line);
 			line = NULL;
 			len = 0;
 			break;
 		}
-		/* Retirer le saut de ligne */
+		/* Remove the newline character */
 		line[nread - 1] = '\0';
-		/* Ignorer les lignes vides */
+		/* Ignore empty lines */
 		if (strlen(line) == 0)
 			continue;
 		if (strcmp(line, "exit") == 0)
 		{
 			free(line);
-			exit(0); /* Quitter le programme avec un code de retour 0 */
+			exit(0); /* Exit the program with return code 0 */
 		}
-		/* Exécuter la commande */
+		/* Execute the command */
 		execute_command(line);
 	}
-	/* Libérer la mémoire */
+	/* Free the memory */
 	free(line);
 	return (0);
 }

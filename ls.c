@@ -1,8 +1,8 @@
 #include "simple_shell.h"
 
 /**
- * execute_ls - Gère la commande "ls".
- * @line: La ligne de commande entrée par l'utilisateur.
+ * execute_ls - Handles the "ls" command.
+ * @line: The command line entered by the user.
  */
 void execute_ls(const char *line)
 {
@@ -11,10 +11,10 @@ void execute_ls(const char *line)
 
 	if (strcmp(line, "ls") == 0)
 	{
-		args[0] = "/bin/ls";  /* Chemin absolu pour "ls" */
-		args[1] = NULL;       /* Pas d'arguments supplémentaires */
+		args[0] = "/bin/ls";  /* Absolute path for "ls" */
+		args[1] = NULL;       /* No additional arguments */
 
-		/* Créer un processus enfant pour exécuter la commande */
+		/* Create a child process to execute the command */
 		if (pid == -1)
 		{
 			perror("fork");
@@ -22,7 +22,7 @@ void execute_ls(const char *line)
 		}
 		else if (pid == 0)
 		{
-			/* Processus enfant : exécuter la commande */
+			/* Child process: execute the command */
 			if (execve(args[0], args, environ) == -1)
 			{
 				_exit(EXIT_FAILURE);
@@ -30,7 +30,7 @@ void execute_ls(const char *line)
 		}
 		else
 		{
-			/* Processus parent : attendre que le processus enfant se termine */
+			/* Parent process: wait for the child process to finish */
 			int status;
 
 			do {
