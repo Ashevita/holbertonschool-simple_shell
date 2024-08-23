@@ -27,15 +27,15 @@ This project is a simple command-line shell written in C. It allows users to exe
 To compile the Simple Shell, run:
 
 ~~~~
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o simple_shell
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o shell
 ~~~~
 
-This creates an executable named simple_shell.
+This creates an executable named shell.
 
 ## Interactive Mode
 Open a terminal.
 
-Navigate to the directory with the simple_shell executable.
+Navigate to the directory with the shell executable.
 
 Run the shell:
 
@@ -48,10 +48,10 @@ Enter commands at the $ prompt. For example:
 
 
 ~~~~
-$ pwd
-$ ls
-$ cd ..
-$ exit
+$ /bin/pwd
+$ /bin/ls
+$ /bin/cd ..
+$ exit or CTRL+D
 ~~~~
 The shell continuously displays a prompt, waits for user input, and executes the command. If the user types exit, the shell terminates; otherwise, it loops back to display the prompt again.
 
@@ -60,7 +60,7 @@ Run a single command:
 
 
 ~~~~
-echo "pwd" | ./simple_shell
+echo "pwd" | ./shell
 ~~~~
 Run multiple commands from a script:
 
